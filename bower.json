@@ -1,0 +1,15 @@
+{
+  "name": "backbone.radio_view",
+  "version": "0.0.0",
+  "main": "dist/backbone.radio_view.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.0.0"
+  }
+}
