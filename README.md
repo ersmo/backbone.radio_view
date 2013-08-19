@@ -2,17 +2,61 @@
 
 > Backbone radio view helper
 
-## Getting Started
+## Usage
 
-_(Coming soon)_
+```js
+new Backbone.RadioListView({
+  el: $('.input-user'),
+  collection: new Backbone.Collection([{
+    id: 1,
+    name: 'jarvis'
+  }, {
+    id: 2,
+    name: 'kinua'
+  }]),
+  name: 'user_name',
+  text: 'name',
+  value: 'id',
+  defaultValue: 1
+});
 
-## Documentation
+new Backbone.RadioItemView({
+  el: $('.input-user'),
+  model: new Backbone.Model({
+    id: 1,
+    name: 'jarvis'
+  }),
+  name: 'user_name',
+  text: 'name',
+  value: 'id',
+  selected: true
+});
 
-_(Coming soon)_
+```
 
-## Examples
+## Options
 
-_(Coming soon)_
+Backbone.RadioListView
+
+```coffee
+defaults:
+  name: 'input'
+  text: ''
+  value: ''
+  inline: false
+  defaultValue: null
+```
+
+Backbone.RadioItemView
+
+```coffee
+defaults:
+  name: 'input'
+  text: ''
+  value: ''
+  selected: null
+  inline: false
+```
 
 ## License
 
