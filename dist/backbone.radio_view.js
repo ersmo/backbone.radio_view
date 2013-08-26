@@ -134,7 +134,7 @@ buf.push("<div class=\"form_radio_list\"></div>");;return buf.join("");
       $div = this.$el.find('.form_radio_list');
       return this.collection.each(function(model) {
         var radioItemView;
-        radioItemView = Backbone.RadioItemView({
+        radioItemView = new Backbone.RadioItemView({
           model: model,
           name: _this.options.name,
           text: _this.options.text,

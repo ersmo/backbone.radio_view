@@ -24,7 +24,7 @@ class Backbone.RadioListView extends Backbone.View
   renderRadio: =>
     $div = @$el.find('.form_radio_list')
     @collection.each (model) =>
-      radioItemView = Backbone.RadioItemView
+      radioItemView = new Backbone.RadioItemView
         model: model
         name: @options.name
         text: @options.text
