@@ -74,7 +74,17 @@ var locals_ = (locals || {}),name = locals_.name,value = locals_.value,checked =
 
     RadioItemView.prototype.checked = function(e) {
       $("input:radio[name=" + this.options.name + "]").parent('label').removeClass(this.options.checkedStyle);
-      return this.$el.addClass(this.options.checkedStyle);
+      if ($(e.target).prop('tagName') === 'INPUT') {
+        this.$el.addClass(this.options.checkedStyle);
+        return;
+      }
+      e.preventDefault();
+      if (this.$input.attr('checked')) {
+        return this.$input.attr('checked', false);
+      } else {
+        this.$input.attr('checked', 'checked');
+        return this.$el.addClass(this.options.checkedStyle);
+      }
     };
 
     return RadioItemView;

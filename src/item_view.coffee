@@ -2,11 +2,11 @@
 class Backbone.RadioItemView extends Backbone.View
 
   template: JST.radioItem
-  
+
   tagName: 'label'
 
   className: 'radio'
-    
+
   defaults:
     name: 'input'
     text: ''
@@ -17,7 +17,7 @@ class Backbone.RadioItemView extends Backbone.View
 
   events:
     'click': 'checked'
-  
+
   initialize: =>
     @options = _.defaults @options, @defaults
     @listenTo @model, 'change', @render
@@ -27,7 +27,7 @@ class Backbone.RadioItemView extends Backbone.View
   render: =>
     @$el.addClass 'inline' if @options.inline
     @$el.addClass @options.checkedStyle if @options.selected
-    @$el.html @template 
+    @$el.html @template
       model: @model.toJSON()
       name: if _.isFunction @options.name then @options.name(@model) else @options.name
       text: if _.isFunction @options.text then @options.text(@model) else @model.get(@options.text)
@@ -43,4 +43,14 @@ class Backbone.RadioItemView extends Backbone.View
 
   checked: (e) =>
     $("input:radio[name=#{@options.name}]").parent('label').removeClass(@options.checkedStyle)
-    @$el.addClass @options.checkedStyle
+
+    if $(e.target).prop('tagName') is 'INPUT'
+      @$el.addClass @options.checkedStyle
+      return
+
+    e.preventDefault()
+    if @$input.attr 'checked'
+      @$input.attr 'checked', false
+    else
+      @$input.attr 'checked', 'checked'
+      @$el.addClass @options.checkedStyle
