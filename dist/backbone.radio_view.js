@@ -78,12 +78,10 @@ var locals_ = (locals || {}),name = locals_.name,value = locals_.value,checked =
         this.$el.addClass(this.options.checkedStyle);
         return;
       }
-      e.preventDefault();
-      if (this.$input.attr('checked')) {
-        return this.$input.attr('checked', false);
-      } else {
-        this.$input.attr('checked', 'checked');
-        return this.$el.addClass(this.options.checkedStyle);
+      if (this.$input.prop('checked')) {
+        e.preventDefault();
+        this.$input.prop('checked', false);
+        return this.$input.trigger('change');
       }
     };
 

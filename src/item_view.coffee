@@ -48,9 +48,7 @@ class Backbone.RadioItemView extends Backbone.View
       @$el.addClass @options.checkedStyle
       return
 
-    e.preventDefault()
-    if @$input.attr 'checked'
-      @$input.attr 'checked', false
-    else
-      @$input.attr 'checked', 'checked'
-      @$el.addClass @options.checkedStyle
+    if @$input.prop 'checked'
+      e.preventDefault()
+      @$input.prop 'checked', false
+      @$input.trigger 'change'
